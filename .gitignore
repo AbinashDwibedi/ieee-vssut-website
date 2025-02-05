@@ -1,0 +1,8 @@
+my-project (copy)
+# server
+firebase.js
+p.js
+dist
+.firebase
+.firebaserc
+firebase.json

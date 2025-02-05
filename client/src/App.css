@@ -1,0 +1,205 @@
+*{
+	margin : 0;
+	padding : 0;
+	box-sizing : border-box;
+	list-style : none;
+}
+html {
+    scroll-behavior: smooth;
+}
+input,option{
+    outline: none;
+    border: none;
+}
+HTML CSSResult Skip Results Iframe
+body {
+    background: #000;
+}
+.hero-container{
+background-color:#ffffffa6;
+background-blend-mode: color;
+/* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='88' y1='88' x2='0' y2='0'%3E%3Cstop offset='0' stop-color='%23233144'/%3E%3Cstop offset='1' stop-color='%233e4c5f'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='75' y1='76' x2='168' y2='160'%3E%3Cstop offset='0' stop-color='%23868686'/%3E%3Cstop offset='0.09' stop-color='%23ababab'/%3E%3Cstop offset='0.18' stop-color='%23c4c4c4'/%3E%3Cstop offset='0.31' stop-color='%23d7d7d7'/%3E%3Cstop offset='0.44' stop-color='%23e5e5e5'/%3E%3Cstop offset='0.59' stop-color='%23f1f1f1'/%3E%3Cstop offset='0.75' stop-color='%23f9f9f9'/%3E%3Cstop offset='1' stop-color='%23FFFFFF'/%3E%3C/linearGradient%3E%3Cfilter id='c' x='0' y='0' width='200%25' height='200%25'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='12' /%3E%3C/filter%3E%3C/defs%3E%3Cpolygon fill='url(%23a)' points='0 174 0 0 174 0'/%3E%3Cpath fill='%23000' fill-opacity='.5' filter='url(%23c)' d='M121.8 174C59.2 153.1 0 174 0 174s63.5-73.8 87-94c24.4-20.9 87-80 87-80S107.9 104.4 121.8 174z'/%3E%3Cpath fill='url(%23b)' d='M142.7 142.7C59.2 142.7 0 174 0 174s42-66.3 74.9-99.3S174 0 174 0S142.7 62.6 142.7 142.7z'/%3E%3C/svg%3E"); */
+/* background-image: url("https://media.istockphoto.com/id/1198599878/photo/rolled-engineering-drawings-at-blue-background-with-copy-space.webp?a=1&b=1&s=612x612&w=0&k=20&c=zobsxaqJAp0D7Z-U9Qmpaju5NPm1nFrKCWlota4dbYc="); */
+background-attachment: local;
+/* background-size: cover; */
+background-repeat: no-repeat;
+background-position: top left;
+}
+/* .center-con {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+	margin-top: 10vh;
+}
+
+.round {
+    position: relative;
+    border: 3px solid black;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.round span {
+    z-index: 999;
+    height: 3px;
+    margin:1px;
+    width: 30px;
+    background: black;
+    transition: 0.4s ease;
+}
+
+.round span:first-child {
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 25%;
+    bottom: 35%;
+}
+
+.round span:nth-child(2) {
+    display: block;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 45%;
+    bottom: 35%;
+}
+
+.round span:nth-child(3) {
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 25%;
+    bottom: 54%;
+}
+
+.round span:nth-child(4) {
+    display: block;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 45%;
+    bottom: 54%;
+}
+
+.round:hover span:nth-child(1) {
+    transform: rotate(-135deg);
+}
+
+.round:hover span:nth-child(2) {
+    transform: rotate(135deg);
+}
+
+.round:hover span:nth-child(3) {
+    transform: rotate(225deg);
+}
+
+.round:hover span:nth-child(4) {
+    transform: rotate(-225deg);
+} */
+
+::-webkit-scrollbar {
+    width: 8px; 
+    height: 8px; 
+  }
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #e0e0e0 0%, #d0d0d0 100%);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #020617;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+ 
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #888 0%, #666 100%); 
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+  }
+  
+  .navbar{
+    width: calc(100% - 20px);
+    top: 10px;
+    left: 10px;
+    border-radius: 24px;
+    background-color: #020617da;
+    backdrop-filter: blur(20px);
+  }
+.register-btn {
+    @apply inline-block py-3 px-6 text-lg font-semibold text-white rounded-full shadow-md relative;
+    @apply bg-gradient-to-r from-primary to-secondary hover:from-primary hover:to-secondary;
+    @apply transform transition-all duration-300 ease-in-out;
+    /* cursor: pointer; */
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .register-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  .register-btn:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: glow-animation 2s infinite ease-in-out;
+  }
+  
+
+  @keyframes glow-animation {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.4);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .register-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.6);
+  }
+  
+  /*cursor part starts from here */
+/* 
+body {
+    cursor: none;
+  } */
+  
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #020617;
+    pointer-events: none;
+    transition: transform 0.1s ease, background-color 0.3s ease;
+    transform: translate(-50%, -50%);
+    border-radius: 0 50px 45px 50px;
+    z-index: 9999;
+  }
+  /* a:hover, button:hover {
+    background-color: #ff6347; 
+  } */
+  
+  a, button {
+    /* cursor: none;  */
+  }
+  
