@@ -64,7 +64,7 @@ function Register() {
     if (validateForm()) {
       try {
         setIsCreating(true);
-        const { data } = await axios.post("https://ieee-induction.vercel.app/api/domain/register", formData);
+        const { data } = await axios.post("https://ieee-vssut-website.vercel.app/api/domain/register", formData);
         setSubmitted(data.status);
         if (data.status) {
           toast.success("Form submitted successfully 👍");
