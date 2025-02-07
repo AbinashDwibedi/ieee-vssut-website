@@ -125,10 +125,20 @@ background-position: top left;
     width: calc(100% - 20px);
     top: 10px;
     left: 10px;
-    border-radius: 24px;
+    border-radius: 10px;
     background-color: #020617da;
     backdrop-filter: blur(20px);
   }
+
+  .about-about{
+    color: transparent;
+    background-image: linear-gradient(to bottom, gray 100% , black 0%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+  }
+
+
 .register-btn {
     @apply inline-block py-3 px-6 text-lg font-semibold text-white rounded-full shadow-md relative;
     @apply bg-gradient-to-r from-primary to-secondary hover:from-primary hover:to-secondary;

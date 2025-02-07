@@ -8,7 +8,7 @@ const FromTheDesk = () => {
   useGSAP(()=>{
     gsap.from(".ftd-1 img , .ftd-1 div, .ftd-2 p, .ftd-3",{
       opacity:0,
-      filter:"blur(10px)",
+      // filter:"blur(10px)",
       y:100,
       duration:1,
       stagger:0.2,

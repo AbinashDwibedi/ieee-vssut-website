@@ -9,9 +9,9 @@ function TeamMembers() {
   useGSAP(()=>{
     gsap.from(".tm h2,.tm div div div",{
       opacity:0,
-      filter:"blur(10px)",
-      y:100,
-      duration:1,
+      // filter:"blur(10px)", 
+      // y:100,
+      // duration:1,
       stagger:0.2,
       scale:2,
       scrollTrigger:{

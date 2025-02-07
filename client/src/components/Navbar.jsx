@@ -10,7 +10,7 @@ function Navbar() {
 
   return (
     <div className="navbar z-30 flex px-4 justify-between items-center md:items-stretch h-16 fixed shadow-2xl transition-all ease-in-out duration-300">
-      <div className="flex items-center left-nav">
+      <div className="flex items-center left-nav -translate-x-4">
         <img
           className="h-20 pb-2 transition-all ease-in-out duration-300"
           src="https://ieee-induction-2024.vercel.app/IEEE.png"
@@ -52,13 +52,15 @@ function Navbar() {
             </a>
           </li>
           {/* INDUCTION Button with Default and Hover Background Colors */}
-          <li>
+          <li className="relative ">
             <Link
-              className="induction-btn px-12  md:px-2 md:py-2  bg-white py-2 w-full block rounded-lg md:text-sm text-lg font-mono text-center font-medium border-text-lg b-2 border-transparent transition-all text-black hover:bg-primary  hover:text-white"
+              className="induction-btn px-12   md:px-2 md:py-2  bg-white py-2 w-full block rounded-lg md:text-sm text-lg font-mono text-center font-medium border-text-lg b-2 border-transparent transition-all text-black hover:bg-primary  hover:text-white"
               to="/induction"
             >
               INDUCTION
+              
             </Link>
+            <div className="h-4 w-4 absolute bg-gray -right-1 -top-1 rounded-full bg-white animate-ping "></div>
           </li>
         </ul>
       </div>

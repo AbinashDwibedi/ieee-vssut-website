@@ -17,7 +17,7 @@ function ContactUs() {
         scrub:true,
         // markers:true,
         end:"20% 60%",
-        start:"top 80%"
+        start:"top 90%"
       }
     })
   },[])

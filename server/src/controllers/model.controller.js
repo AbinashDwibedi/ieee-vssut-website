@@ -3,7 +3,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 const registerDomain = async (req, res, next) => {
   try {
-    const { fullName, email, phone, regNumber, branch, domain } = req.body;
+    const { fullName, email, phone, regNumber, branch, domain,nonTechDomain } = req.body;
     const checkAlreadyRegistered = await Domain.findOne({
       $or: [{ email }, { phone }],
     });
@@ -19,6 +19,7 @@ const registerDomain = async (req, res, next) => {
       regNumber,
       branch,
       domain,
+      nonTechDomain
     });
 
     if (!createNewInductionProfile) {

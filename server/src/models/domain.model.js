@@ -30,6 +30,9 @@ const domainSchema = new Schema(
       type: String, // Since domain selection is now single
       required: true,
     },
+    nonTechDomain: {
+      type:String
+    }
   },
   { timestamps: true }
 );

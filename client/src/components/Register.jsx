@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const domains = [
   "IEEE Sensor council",
@@ -9,8 +11,14 @@ const domains = [
   "IEEE CASS",
   "IEEE Computer Society",
 ];
+const nonTechDomains = [
+  "Graphic Designing",
+  "Video Editing",
+  "Content Writing"
+]
 
 function Register() {
+  const [hintErr, setHintErr] = useState("")
   const [isCreating, setIsCreating] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -19,7 +27,9 @@ function Register() {
     regNumber: "",
     branch: "",
     domain: "",
+    nonTechDomain:""
   });
+  const [divHeight,setdivHeight] = useState(window.innerHeight)
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
@@ -31,27 +41,33 @@ function Register() {
     const { fullName, email, phone, regNumber, branch, domain } = formData;
 
     if (!fullName.trim()) {
-      toast.error("Full Name is required!");
+      // toast.error("Full Name is required!");
+      setHintErr("Full Name is required!")
       return false;
     }
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toast.error("Invalid Email Address!");
+      // toast.error("Invalid Email Address!");
+      setHintErr("Invalid Email Address!")
       return false;
     }
     if (!phone.trim() || !/^\d{10}$/.test(phone)) {
-      toast.error("Phone Number must be 10 digits!");
+      // toast.error("Phone Number must be 10 digits!");
+      setHintErr("Phone Number must be 10 digits!")
       return false;
     }
     if (!regNumber.trim()) {
-      toast.error("Registration Number is required!");
+      // toast.error("Registration Number is required!");
+      setHintErr("Registration Number is required!")
       return false;
     }
     if (!branch.trim()) {
-      toast.error("Branch is required!");
+      // toast.error("Branch is required!");
+      setHintErr("Branch is required!")
       return false;
     }
     if (!domain.trim()) {
-      toast.error("Please select a Domain!");
+      // toast.error("Please select a Domain!");
+      setHintErr("Please select a Domain!")
       return false;
     }
 
@@ -64,13 +80,16 @@ function Register() {
     if (validateForm()) {
       try {
         setIsCreating(true);
-        const { data } = await axios.post("https://ieee-vssut-website.vercel.app/api/domain/register", formData);
+        const { data } = await axios.post("https://ieee-vssut.vercel.app/api/domain/register", formData);
+        // const { data } = await axios.post("http://localhost:3000/api/domain/register", formData);
         setSubmitted(data.status);
         if (data.status) {
-          toast.success("Form submitted successfully 👍");
+          // toast.success("Form submitted successfully 👍");
+          setHintErr("Form submitted successfully 👍")
           return
         }
-        toast.error(data.message);
+        // toast.error(data.message);
+        setHintErr(data.message)
         setFormData({
           fullName: "",
           email: "",
@@ -87,17 +106,25 @@ function Register() {
     }
   };
 
+  useGSAP(()=>{
+    gsap.from(".register-div div",{
+      duration:0.5,
+      scale:0,
+      filter:"blur(10px)",
+      opacity:0
+    })
+  },[])
   return (
-    <div className="flex items-center justify-center min-h-screen ">
+    <div className="register-div ">
+      <div style={{minHeight:`${divHeight}px`}} className="flex items-center justify-center ">
       <form
-        className="bg-white shadow-lg rounded-xl p-8 max-w-lg w-full"
+        className="bg-white  rounded-xl p-8 max-w-lg w-full"
         onSubmit={handleSubmit}
       >
         <h1 className="text-2xl font-bold mb-6 text-center text-primary">
           Register 📝
         </h1>
 
-        {/* Full Name Field */}
         <div className="mb-4">
           <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
             <i className="fas fa-user text-primary mr-2"></i>
@@ -114,7 +141,6 @@ function Register() {
           />
         </div>
 
-        {/* Email Field */}
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             <i className="fas fa-envelope text-primary mr-2"></i>
@@ -131,7 +157,6 @@ function Register() {
           />
         </div>
 
-        {/* Phone Field */}
         <div className="mb-4">
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
             <i className="fas fa-phone-alt text-primary mr-2"></i>
@@ -148,7 +173,6 @@ function Register() {
           />
         </div>
 
-        {/* Registration Number Field */}
         <div className="mb-4">
           <label htmlFor="regNumber" className="block text-sm font-medium text-gray-700">
             <i className="fas fa-id-card text-primary mr-2"></i>
@@ -165,7 +189,6 @@ function Register() {
           />
         </div>
 
-        {/* Branch Field */}
         <div className="mb-4">
           <label htmlFor="branch" className="block text-sm font-medium text-gray-700">
             <i className="fas fa-school text-primary mr-2"></i>
@@ -182,18 +205,17 @@ function Register() {
           />
         </div>
 
-        {/* Domain Field */}
         <div className="mb-6">
           <label htmlFor="domain" className="block text-sm font-medium text-gray-700">
             <i className="fas fa-cogs text-primary mr-2"></i>
-            Domain <span className="text-red-500">*</span>
+            Choose Domains <span className="text-red-500">*</span>
           </label>
           <select
             id="domain"
             name="domain"
             value={formData.domain}
             onChange={handleChange}
-            className="pl-2 mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-primary focus:border-primary bg-white"
+            className="pl-2 my-4 block w-full rounded-md border-gray-300 shadow-sm focus:ring-primary focus:border-primary bg-white"
           >
             <option value="" disabled>
               Select Domain
@@ -204,17 +226,34 @@ function Register() {
               </option>
             ))}
           </select>
+          <select
+            id="nonTechDomain"
+            name="nonTechDomain"
+            value={formData.nonTechDomain}
+            onChange={handleChange}
+            className="pl-2 mt-4 block w-full rounded-md border-gray-300 shadow-sm focus:ring-primary focus:border-primary bg-white"
+          >
+            <option value="" disabled>
+              Select nonTechDomain
+            </option>
+            {nonTechDomains.map((nonTechDomain, index) => (
+              <option key={index} value={nonTechDomain}>
+                {nonTechDomain}
+              </option>
+            ))}
+          </select>
         </div>
-
-        {/* Submit Button */}
+        {hintErr && <div className="text-md text-primary text-center p-2 font-bold">{hintErr}</div>}
         <button
           type="submit"
           className="w-full bg-primary hover:bg-secondary text-white font-semibold py-2 px-4 rounded-md transition-all"
         >
+          
           {isCreating ? <i className="fa-solid animate-spin fa-spinner"></i> : "Register 🚀"}
         </button>
       </form>
       <ToastContainer />
+    </div>
     </div>
   );
 }
